@@ -1,11 +1,40 @@
-#<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Algorithm Analizer</title>
+    <title>Algorithm Analyzer</title>
   </head>
-  <body>
-    <canvas id="myChart" width="400" height="400"></canvas>
+  <body style="text-align: center">
+    <ul id="userinputs">
+      <li style="display: inline-block">
+        <textarea cols="50" rows="15" id="func">
+(n) => {
+   let r = 0;
+   for(let i=0; i<n; i++){
+      r++;
+   }
+   return r;
+}
+      </textarea>
+      </li>
+      <li style="display: inline-block; text-align: left">
+        n starts at...<br>
+        <input type="text" id="n" value="0"></input><br>
+        ends when this returns true...<br>
+        <input type="text" id="validate" value="n => n<100000000"></input><br>
+        changes in this way every run...<br>
+        <input type="text" id="iter" value="n => n+1000000"></input><br>
+        is passed into my algorithm at this index...<br>
+        <input type="text" id="varArgNum" value="0"></input><br>
+        and these are the other arguments that my algorithm needs...<br>
+        <input type="text" id="args" value="[]"></input><br>
+      </li>
+    </ul>
+    <button type="button" onclick="getInput()">Analyze my Algorithm!</button>
+    <p style="text-align: center; width:30%; padding-left:35%">
+      <img src="loading.gif" id="loading" width="0" height="0" alt="loading">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </p>
     <script src="Chart.js"></script>
     <script src="dataGen.js"></script>
     <script src="makeGraph.js"></script>

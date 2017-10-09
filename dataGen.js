@@ -20,6 +20,16 @@ function time(func, n=0, validate= x => x<1000, iter= x => x+1, varArgNum=0, ...
   return times;
 }
 
+onmessage = function(args){ //args should be an array of args to be passed right into time
+  /*for(const a in args) {
+    console.log(a, ': ', args[a]);
+  }*/
+  const parsedArgs = args.data.map(e => eval(e));
+  postMessage({
+    result: time(...parsedArgs.slice(0, parsedArgs.length-1), ...parsedArgs[parsedArgs.length-1])
+  });
+}
+
 /**
 * just a test of the function : any values that you want to skip should be set to undefined
 console.log(time(n => {
